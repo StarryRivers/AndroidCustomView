@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="请选择"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_choose_pic_camera"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="拍照"
+            android:gravity="center"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_choose_pic_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="从相册选择"
+            android:gravity="center"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_choose_pic_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="取消"
+            android:gravity="center" />
+    </LinearLayout>
+</layout>
