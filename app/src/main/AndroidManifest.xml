@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+    package="com.custom.view">
     <!--用于拍照上传照片-->
     <uses-permission android:name="android.permission.CAMERA" />
     <!--用于写入缓存数据到扩展存储卡-->
@@ -13,17 +13,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.custom.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- SelectPictureActivity -->
+        <activity android:name=".upload.SelectPictureActivity"
+            android:theme="@style/AppTheme" />
         <!-- 应用共享Provider -->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.myapplication.fileprovider"
+            android:authorities="com.custom.view.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

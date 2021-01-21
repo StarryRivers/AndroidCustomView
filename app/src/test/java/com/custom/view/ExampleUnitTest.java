@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.custom.view;
 
 import org.junit.Test;
 

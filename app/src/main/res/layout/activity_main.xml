@@ -10,81 +10,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_help_title"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:background="@color/colorPrimary"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="start|center_vertical"
-            android:paddingStart="10dp"
+        <Button
+            android:id="@+id/btn_picture"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:text="选择图片"
+            android:gravity="center"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/style_button_round"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_help_image_first"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:src="@mipmap/ic_upload_image"
+        <TextView
+            android:id="@+id/tv_password_edittext_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_help_title" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_picture"
+            android:text="Custom Password EditText"  />
 
-        <ImageView
-            android:id="@+id/iv_help_image_first_delete"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@mipmap/ic_delete_image"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/iv_help_image_first"
-            app:layout_constraintEnd_toEndOf="@id/iv_help_image_first" />
-
-        <ImageView
-            android:id="@+id/iv_help_image_second"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:src="@mipmap/ic_upload_image"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@id/iv_help_image_first"
-            app:layout_constraintTop_toBottomOf="@id/tv_help_title" />
-
-        <ImageView
-            android:id="@+id/iv_help_image_second_delete"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@mipmap/ic_delete_image"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/iv_help_image_second"
-            app:layout_constraintEnd_toEndOf="@id/iv_help_image_second" />
-
-        <ImageView
-            android:id="@+id/iv_help_image_third"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:src="@mipmap/ic_upload_image"
-            android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@id/iv_help_image_second"
-            app:layout_constraintTop_toBottomOf="@id/tv_help_title" />
-
-        <ImageView
-            android:id="@+id/iv_help_image_third_delete"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@mipmap/ic_delete_image"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/iv_help_image_third"
-            app:layout_constraintEnd_toEndOf="@id/iv_help_image_third" />
-
+        <com.custom.view.edittext.PasswordEditText
+            android:id="@+id/pet_password"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            app:inputMaxNum="6"
+            android:inputType="numberPassword"
+            android:background="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_password_edittext_tips" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

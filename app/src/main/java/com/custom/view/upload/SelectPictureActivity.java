@@ -1,13 +1,7 @@
-package com.example.myapplication;
+package com.custom.view.upload;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-import androidx.databinding.DataBindingUtil;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -17,18 +11,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.databinding.DataBindingUtil;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.myapplication.databinding.ActivityMainBinding;
-import com.example.myapplication.databinding.DialogChoosePicTypeBinding;
+import com.custom.view.R;
+import com.custom.view.databinding.ActivitySelectPictureBinding;
+import com.custom.view.databinding.DialogChoosePicTypeBinding;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
-    private ActivityMainBinding binding;
+/**
+ * 从相机、图库选择图片
+ *
+ * @author StarryRivers
+ */
+public class SelectPictureActivity extends AppCompatActivity {
+    private static final String TAG = "SelectPictureActivity";
+    private ActivitySelectPictureBinding selectPictureBinding;
     String imgPath = "";
 
     @Override
@@ -37,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         if (getSupportActionBar() != null){
             getSupportActionBar().hide();
         }
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        selectPictureBinding = DataBindingUtil.setContentView(this, R.layout.activity_select_picture);
         requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         initEvent();
     }
@@ -46,26 +52,26 @@ public class MainActivity extends AppCompatActivity {
      * Initial Event
      */
     private void initEvent() {
-        binding.ivHelpImageFirst.setOnClickListener(v -> {
+        selectPictureBinding.ivHelpImageFirst.setOnClickListener(v -> {
             choosePictureDialog(10);
         });
-        binding.ivHelpImageFirstDelete.setOnClickListener(v -> {
-            binding.ivHelpImageFirstDelete.setVisibility(View.GONE);
-            binding.ivHelpImageFirst.setImageResource(R.mipmap.ic_upload_image);
+        selectPictureBinding.ivHelpImageFirstDelete.setOnClickListener(v -> {
+            selectPictureBinding.ivHelpImageFirstDelete.setVisibility(View.GONE);
+            selectPictureBinding.ivHelpImageFirst.setImageResource(R.mipmap.ic_upload_image);
         });
-        binding.ivHelpImageSecond.setOnClickListener(v -> {
+        selectPictureBinding.ivHelpImageSecond.setOnClickListener(v -> {
             choosePictureDialog(11);
         });
-        binding.ivHelpImageSecondDelete.setOnClickListener(v -> {
-            binding.ivHelpImageSecondDelete.setVisibility(View.GONE);
-            binding.ivHelpImageSecond.setImageResource(R.mipmap.ic_upload_image);
+        selectPictureBinding.ivHelpImageSecondDelete.setOnClickListener(v -> {
+            selectPictureBinding.ivHelpImageSecondDelete.setVisibility(View.GONE);
+            selectPictureBinding.ivHelpImageSecond.setImageResource(R.mipmap.ic_upload_image);
         });
-        binding.ivHelpImageThird.setOnClickListener(v -> {
+        selectPictureBinding.ivHelpImageThird.setOnClickListener(v -> {
             choosePictureDialog(12);
         });
-        binding.ivHelpImageThirdDelete.setOnClickListener(v -> {
-            binding.ivHelpImageThirdDelete.setVisibility(View.GONE);
-            binding.ivHelpImageThird.setImageResource(R.mipmap.ic_upload_image);
+        selectPictureBinding.ivHelpImageThirdDelete.setOnClickListener(v -> {
+            selectPictureBinding.ivHelpImageThirdDelete.setVisibility(View.GONE);
+            selectPictureBinding.ivHelpImageThird.setImageResource(R.mipmap.ic_upload_image);
         });
     }
 
@@ -113,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         imgPath = picture.getAbsolutePath();
         // 调用相机拍照
         Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        camera.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(this, "com.example.myapplication.fileprovider", picture));
+        camera.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(this, "com.custom.view.fileprovider", picture));
         startActivityForResult(camera, type);
     }
 
@@ -138,33 +144,33 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 10:
                 if (data == null && !imgPath.isEmpty()) {
-                    Glide.with(this).load(imgPath).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(binding.ivHelpImageFirst);
-                    binding.ivHelpImageFirstDelete.setVisibility(View.VISIBLE);
-                    binding.ivHelpImageSecond.setVisibility(View.VISIBLE);
+                    Glide.with(this).load(imgPath).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(selectPictureBinding.ivHelpImageFirst);
+                    selectPictureBinding.ivHelpImageFirstDelete.setVisibility(View.VISIBLE);
+                    selectPictureBinding.ivHelpImageSecond.setVisibility(View.VISIBLE);
                 } else if (data != null) {
-                    Glide.with(this).load(data.getData()).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(binding.ivHelpImageFirst);
-                    binding.ivHelpImageFirstDelete.setVisibility(View.VISIBLE);
-                    binding.ivHelpImageSecond.setVisibility(View.VISIBLE);
+                    Glide.with(this).load(data.getData()).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(selectPictureBinding.ivHelpImageFirst);
+                    selectPictureBinding.ivHelpImageFirstDelete.setVisibility(View.VISIBLE);
+                    selectPictureBinding.ivHelpImageSecond.setVisibility(View.VISIBLE);
                 }
                 break;
             case 11:
                 if (data == null && !imgPath.isEmpty()) {
-                    Glide.with(this).load(imgPath).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(binding.ivHelpImageSecond);
-                    binding.ivHelpImageSecondDelete.setVisibility(View.VISIBLE);
-                    binding.ivHelpImageThird.setVisibility(View.VISIBLE);
+                    Glide.with(this).load(imgPath).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(selectPictureBinding.ivHelpImageSecond);
+                    selectPictureBinding.ivHelpImageSecondDelete.setVisibility(View.VISIBLE);
+                    selectPictureBinding.ivHelpImageThird.setVisibility(View.VISIBLE);
                 } else if (data != null) {
-                    Glide.with(this).load(data.getData()).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(binding.ivHelpImageSecond);
-                    binding.ivHelpImageSecondDelete.setVisibility(View.VISIBLE);
-                    binding.ivHelpImageThird.setVisibility(View.VISIBLE);
+                    Glide.with(this).load(data.getData()).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(selectPictureBinding.ivHelpImageSecond);
+                    selectPictureBinding.ivHelpImageSecondDelete.setVisibility(View.VISIBLE);
+                    selectPictureBinding.ivHelpImageThird.setVisibility(View.VISIBLE);
                 }
                 break;
             case 12:
                 if (data == null && !imgPath.isEmpty()) {
-                    Glide.with(this).load(imgPath).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(binding.ivHelpImageThird);
-                    binding.ivHelpImageThirdDelete.setVisibility(View.VISIBLE);
+                    Glide.with(this).load(imgPath).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(selectPictureBinding.ivHelpImageThird);
+                    selectPictureBinding.ivHelpImageThirdDelete.setVisibility(View.VISIBLE);
                 } else if (data != null) {
-                    Glide.with(this).load(data.getData()).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(binding.ivHelpImageThird);
-                    binding.ivHelpImageThirdDelete.setVisibility(View.VISIBLE);
+                    Glide.with(this).load(data.getData()).skipMemoryCache(true).diskCacheStrategy(DiskCacheStrategy.NONE).into(selectPictureBinding.ivHelpImageThird);
+                    selectPictureBinding.ivHelpImageThirdDelete.setVisibility(View.VISIBLE);
                 }
                 break;
             default:
@@ -194,5 +200,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return path;
     }
-
 }

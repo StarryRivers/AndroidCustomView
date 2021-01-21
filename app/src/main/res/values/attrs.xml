@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PasswordEditText">
+        <attr name="inputMaxNum" format="integer" />
+        <attr name="roundAngle" format="dimension" />
+        <attr name="borderColor" format="color" />
+        <attr name="divingColor" format="color" />
+        <attr name="circleColor" format="color" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="divingWidth" format="dimension" />
+        <attr name="circleRadius" format="dimension" />
+    </declare-styleable>
+</resources>

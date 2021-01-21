@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <TextView
+            android:id="@+id/tv_help_title"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:background="@color/colorPrimary"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="start|center_vertical"
+            android:paddingStart="10dp"
+            android:text="选择图片"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_help_image_first"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/ic_upload_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_help_title" />
+
+        <ImageView
+            android:id="@+id/iv_help_image_first_delete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/ic_delete_image"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/iv_help_image_first"
+            app:layout_constraintEnd_toEndOf="@id/iv_help_image_first" />
+
+        <ImageView
+            android:id="@+id/iv_help_image_second"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/ic_upload_image"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/iv_help_image_first"
+            app:layout_constraintTop_toBottomOf="@id/tv_help_title" />
+
+        <ImageView
+            android:id="@+id/iv_help_image_second_delete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/ic_delete_image"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/iv_help_image_second"
+            app:layout_constraintEnd_toEndOf="@id/iv_help_image_second" />
+
+        <ImageView
+            android:id="@+id/iv_help_image_third"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/ic_upload_image"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/iv_help_image_second"
+            app:layout_constraintTop_toBottomOf="@id/tv_help_title" />
+
+        <ImageView
+            android:id="@+id/iv_help_image_third_delete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/ic_delete_image"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/iv_help_image_third"
+            app:layout_constraintEnd_toEndOf="@id/iv_help_image_third" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
